@@ -1,0 +1,46 @@
+[
+    {
+        "countryName": "European Union",
+        "pathImage": "https://w7.pngwing.com/pngs/849/624/png-transparent-european-union-flag-of-europe-eu-flegt-action-plan-france-germany-france-flag-logo-symmetry.png",
+        "typeCurrency": "EUR",
+        "nameCurrency": "Euro"
+    },
+    {
+        "countryName": "United States",
+        "pathImage": "https://e7.pngegg.com/pngimages/694/769/png-clipart-flag-of-the-united-states-united-states-flag-text.png",
+        "typeCurrency": "USD",
+        "nameCurrency": "Dólares"
+    },
+    {
+        "countryName": "Japan",
+        "pathImage": "https://w7.pngwing.com/pngs/983/233/png-transparent-flag-of-japan-empire-of-japan-half-life-s-flag-text-rectangle.png",
+        "typeCurrency": "JPY",
+        "nameCurrency": "Yen"
+    },
+    {
+        "countryName": "United Kingdom",
+        "pathImage": "https://img2.freepng.es/20180326/gre/kisspng-england-flag-of-the-united-kingdom-flag-of-great-b-england-5ab872a144d506.7267652915220374092819.jpg",
+        "typeCurrency": "GBP",
+        "nameCurrency": "Libra británica"
+        
+    },
+    {
+        "countryName": "Switzerland",
+        "pathImage": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Bandera_de_Suiza.png",
+        "typeCurrency": "CHF",
+        "nameCurrency": "Franco suizo"        
+    },
+    {
+        "countryName": "Canada",
+        "pathImage": "https://w7.pngwing.com/pngs/333/876/png-transparent-flag-of-canada-canada-flag-leaf-text.png",
+        "typeCurrency": "CAD",
+        "nameCurrency": "Dolar canadiense"   
+    },
+    {
+        "countryName": "Perú",
+        "pathImage": "https://w7.pngwing.com/pngs/258/931/png-transparent-flag-of-peru-national-flag-peru-national-football-team-flag-miscellaneous-flag-logo.png",
+        "typeCurrency": "PEN",
+        "nameCurrency": "Soles"   
+    }
+
+]

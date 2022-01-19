@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.retobcpcurrency.ui.changeCurrency.ChangeCurrencyViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.changeCurrency.ChangeCurrencyActivity"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_bcp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rlMid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivLogo">
+            <LinearLayout
+                android:id="@+id/llSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hintTextSend"
+                    tools:hint="Texto de Prueva"
+                    app:boxCornerRadiusTopStart="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etValueSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.sendMoney}"
+                        android:textSize="18sp"
+                        android:maxLength="9"
+                        android:lineHeight="24sp"
+                        android:gravity="bottom|left"
+                        tools:text="Valor de Prueba"
+                        android:inputType="numberDecimal"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/send_background">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:text="@{viewModel.sendCurrencies.nameCurrency}"
+                        tools:text="Dolares"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llSend"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hintTextReceives"
+                    tools:hint="Texto de Prueva"
+
+                    app:boxCornerRadiusBottomStart="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etValueGet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.format(`%.2f`,Double.valueOf(viewModel.sendMoney.equals(``)?`0`:viewModel.sendMoney) * viewModel.purchaseCurrency)}"
+                        android:textSize="18sp"
+                        android:maxLength="9"
+                        android:lineHeight="24sp"
+                        android:gravity="bottom|left"
+                        tools:text="Valor de Prueba"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/get_background">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:text="@{viewModel.getCurrencies.nameCurrency}"
+                        tools:text="Dolares"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChangeCurrency"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                app:backgroundTint="@color/white"
+                app:rippleColor="@color/blue"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                app:icon="@drawable/ic_baseline_sync_24"
+                app:iconSize="48dp"
+                app:iconGravity="textStart"
+                android:padding="0dp"
+                app:iconPadding="0dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Currency.Button.Circle"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/rlMid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/tvPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="12"
+                android:text="@{`Compra: `+String.valueOf(viewModel.purchaseCurrency)}"/>
+            <TextView
+                android:id="@+id/tvSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{`Venta: `+String.valueOf(viewModel.saleNameCurrency)}"
+                android:maxLength="11"
+                android:layout_toRightOf="@+id/tvPurchase"/>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</layout>

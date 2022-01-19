@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/white"/>
+    <item
+        android:width="320dp"
+        android:height="120dp"
+        android:gravity="center"
+        android:bottom="80dp"
+        android:drawable="@drawable/ic_logo_bcp">
+    </item>
+</layer-list>
