@@ -55,24 +55,21 @@
                         android:inputType="numberDecimal"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
-                <RelativeLayout
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNameCurrency1"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
                     android:layout_height="match_parent"
-                    android:background="@drawable/send_background">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:text="@{viewModel.sendCurrencies.nameCurrency}"
-                        tools:text="Dolares"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-
-                </RelativeLayout>
+                    android:layout_weight="2"
+                    android:background="@drawable/send_background"
+                    android:text="@{viewModel.sendCurrencies.nameCurrency}"
+                    tools:text="Soles"
+                    android:textColor="@color/white"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:textAllCaps="false"
+                    />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,23 +96,19 @@
                         tools:text="Valor de Prueba"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
-                <RelativeLayout
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNameCurrency2"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
                     android:layout_height="match_parent"
-                    android:background="@drawable/get_background">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:text="@{viewModel.getCurrencies.nameCurrency}"
-                        tools:text="Dolares"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-
-                </RelativeLayout>
+                    android:layout_weight="2"
+                    android:background="@drawable/get_background"
+                    android:text="@{viewModel.getCurrencies.nameCurrency}"
+                    tools:text="Dolares"
+                    android:textColor="@color/white"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:textAllCaps="false"
+                    />
             </LinearLayout>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnChangeCurrency"
@@ -148,16 +141,15 @@
                 android:id="@+id/tvPurchase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="12"
-                android:text="@{`Compra: `+String.valueOf(viewModel.purchaseCurrency)}"/>
+                android:text="@{`Compra: `+String.format(`%.2f`,viewModel.purchaseCurrency)}"/>
+
             <TextView
                 android:id="@+id/tvSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{`Venta: `+String.valueOf(viewModel.saleNameCurrency)}"
-                android:maxLength="11"
-                android:layout_toRightOf="@+id/tvPurchase"/>
+                android:layout_toRightOf="@+id/tvPurchase"
+                android:text="@{`Venta: `+String.format(`%.2f`,viewModel.saleNameCurrency)}" />
         </RelativeLayout>
 
 

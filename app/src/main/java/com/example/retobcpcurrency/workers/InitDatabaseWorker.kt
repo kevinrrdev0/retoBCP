@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.example.retobcpcurrency.data.AppDataBase
-import com.example.retobcpcurrency.data.entity.Currency
+import com.example.retobcpcurrency.data.local.AppDataBase
+import com.example.retobcpcurrency.data.local.entity.Currency
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers

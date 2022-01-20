@@ -1,6 +1,6 @@
 package com.example.retobcpcurrency.ui.adapters
 
-import com.example.retobcpcurrency.data.entity.Currency
+import com.example.retobcpcurrency.data.local.entity.Currency
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

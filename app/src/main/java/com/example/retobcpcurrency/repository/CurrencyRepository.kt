@@ -1,8 +1,8 @@
 package com.example.retobcpcurrency.repository
 
 import com.example.retobcpcurrency.BuildConfig
-import com.example.retobcpcurrency.data.dao.CurrencyDao
-import com.example.retobcpcurrency.data.entity.Currency
+import com.example.retobcpcurrency.data.local.dao.CurrencyDao
+import com.example.retobcpcurrency.data.local.entity.Currency
 import com.example.retobcpcurrency.data.network.EndPointService
 import javax.inject.Inject
 

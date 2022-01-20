@@ -1,4 +1,4 @@
-package com.example.retobcpcurrency.data.entity
+package com.example.retobcpcurrency.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

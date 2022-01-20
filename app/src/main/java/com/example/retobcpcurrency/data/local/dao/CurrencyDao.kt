@@ -1,13 +1,13 @@
-package com.example.retobcpcurrency.data.dao
+package com.example.retobcpcurrency.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.retobcpcurrency.data.entity.Currency
+import com.example.retobcpcurrency.data.local.entity.Currency
 
 @Dao
-interface CurrencyDao : BaseDao<Currency>{
+interface CurrencyDao : BaseDao<Currency> {
     /**
      * Get all data from the Data table.
      */

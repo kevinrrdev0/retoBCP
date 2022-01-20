@@ -1,8 +1,8 @@
 package com.example.retobcpcurrency.di
 
 import android.content.Context
-import com.example.retobcpcurrency.data.AppDataBase
-import com.example.retobcpcurrency.data.dao.CurrencyDao
+import com.example.retobcpcurrency.data.local.AppDataBase
+import com.example.retobcpcurrency.data.local.dao.CurrencyDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ class DataBaseModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context):AppDataBase{
+    fun provideAppDatabase(@ApplicationContext context: Context): AppDataBase {
         return AppDataBase.getInstance(context)
     }
 
