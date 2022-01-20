@@ -20,9 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ChangeCurrencyViewModel @Inject constructor(private val repository: CurrencyRepository) :
     ViewModel() {
-    private val TAG: String = "ChangeCurrencyViewModel"
     var sendMoney = MutableLiveData<String>()
-    var getMoney = MutableLiveData<String>()
     var purchaseCurrency = MutableLiveData<Double>()
     var saleNameCurrency = MutableLiveData<Double>()
     val currencyList = MutableLiveData<List<Currency>>()
@@ -35,14 +33,12 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
         sendMoney.value = "100.00"
         versionName.value = "Versión " + BuildConfig.VERSION_NAME
         getCurrencyInit()
-
     }
 
     fun changeCurrencies() {
         val send = sendMoney.value
         val purchase = purchaseCurrency.value
         if (send != null && send != "" && purchase != null && purchase!! >= 0) {
-            //sendMoney.postValue( String.format("%.2f",send.toDouble() * purchase))
             sendCurrencies.postValue(getCurrencies.value)
             getCurrencies.postValue(sendCurrencies.value)
             getCurrencies.value?.let { currencyMulti(it.typeCurrency) }
@@ -61,7 +57,6 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
     }
 
     private fun currencyMulti(from: String) = viewModelScope.launch(Dispatchers.IO) {
-
         repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
            if (it.isSuccessful){
                val results: Results? = it.body()?.results
@@ -99,7 +94,6 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
     }
 
     fun getCurrencyMulti(from: String,to :String) = viewModelScope.launch(Dispatchers.IO) {
-
         repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
             if (it.isSuccessful){
                 val results: Results? = it.body()?.results
@@ -136,7 +130,6 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
         }
     }
     fun sendCurrencyMulti(from: String,to :String) = viewModelScope.launch(Dispatchers.IO) {
-
         repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
             val results: Results? = it.body()?.results
             var valueCurrency: Double
@@ -168,9 +161,6 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
             }
             purchaseCurrency.postValue(valueCurrency)
             saleNameCurrency.postValue(valueCurrency + 0.22)
-
         }
     }
-
-
 }

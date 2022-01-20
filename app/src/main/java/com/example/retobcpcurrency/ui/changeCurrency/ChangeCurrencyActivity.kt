@@ -66,15 +66,9 @@ class ChangeCurrencyActivity : AppCompatActivity() {
                         viewModel.getCurrencyMulti(from!!,to!!)
                     }
                     else -> {
-
                     }
                 }
-
-
             }
-
-
-//            updateExchangeRate(typeExchange)
         }
     }
 }

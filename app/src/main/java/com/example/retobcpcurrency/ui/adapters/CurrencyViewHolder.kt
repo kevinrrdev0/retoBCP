@@ -9,17 +9,11 @@ import com.example.retobcpcurrency.R
 import com.example.retobcpcurrency.databinding.ItemCurrencyBinding
 
 class CurrencyViewHolder(private val binding : ItemCurrencyBinding): RecyclerView.ViewHolder(binding.root) {
-
-
     fun render(item : ItemCurrency,onClickListener:(ItemCurrency)->Unit){
         binding.itemCurrency = item
         Glide.with(binding.ivFlag.context).load(item.currency.pathImage).into(binding.ivFlag)
         itemView.setOnClickListener{
            onClickListener(item)
         }
-
-
     }
-
-
 }

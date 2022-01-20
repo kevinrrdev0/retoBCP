@@ -64,8 +64,8 @@ class CurrencyListActivity : AppCompatActivity() {
         Toast.makeText(this, "PRueba ${item.currency.typeCurrency}", Toast.LENGTH_SHORT).show()
         val data = Intent()
         data.putExtra(TYPE, type)
-        data.putExtra(FROM, item.name) // la moneda inicial del boton
-        data.putExtra(TO, item.currency.typeCurrency) // el tipo de monedo quequiero obtener su valor
+        data.putExtra(FROM, item.name)
+        data.putExtra(TO, item.currency.typeCurrency)
         setResult(RESULT_OK, data)
         finish()
     }
