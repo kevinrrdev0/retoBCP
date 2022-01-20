@@ -61,7 +61,6 @@ class CurrencyListActivity : AppCompatActivity() {
     }
 
     private fun onItemSelected(item:ItemCurrency){
-        Toast.makeText(this, "PRueba ${item.currency.typeCurrency}", Toast.LENGTH_SHORT).show()
         val data = Intent()
         data.putExtra(TYPE, type)
         data.putExtra(FROM, item.name)

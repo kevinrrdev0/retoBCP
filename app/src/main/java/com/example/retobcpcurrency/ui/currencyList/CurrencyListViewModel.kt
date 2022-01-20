@@ -62,7 +62,6 @@ class CurrencyListViewModel @Inject constructor(private val repository: Currency
                             valueCurrency = 0.0
                         }
                     }
-                    Log.d(TAG, "getCurrencyList: ${item.countryName}")
                     list.add(ItemCurrency(from,item,valueCurrency))
                 }
                 listItemCurrency.postValue(list)
@@ -71,7 +70,6 @@ class CurrencyListViewModel @Inject constructor(private val repository: Currency
                 val gson = Gson()
                 val type = object : TypeToken<CurrencyResponse>() {}.type
                 val errorResponse: CurrencyResponse? = gson.fromJson(it.errorBody()?.string(), type)
-                Log.d(TAG, "getCurrencyMulti: " +errorResponse?.error)
             }
         }
     }
