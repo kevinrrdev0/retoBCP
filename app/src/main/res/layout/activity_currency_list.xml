@@ -27,6 +27,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/ivLogo"/>
+        <ProgressBar
+            android:id="@+id/pbRv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ivLogo"
+            android:layout_centerHorizontal="true"
+            />
 
     </RelativeLayout>
 </layout>

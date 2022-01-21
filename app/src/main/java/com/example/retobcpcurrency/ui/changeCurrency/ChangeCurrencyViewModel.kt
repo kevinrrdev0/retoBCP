@@ -10,6 +10,7 @@ import com.example.retobcpcurrency.data.network.response.CurrencyResponse
 import com.example.retobcpcurrency.data.network.response.Results
 import com.example.retobcpcurrency.repository.CurrencyRepository
 import com.example.retobcpcurrency.ui.adapters.ItemCurrency
+import com.example.retobcpcurrency.utilities.VAL_MULTIPLE
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -57,36 +58,10 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
     }
 
     private fun currencyMulti(from: String) = viewModelScope.launch(Dispatchers.IO) {
-        repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
+        repository.getCurrencyMulti(from, VAL_MULTIPLE).let {
            if (it.isSuccessful){
                val results: Results? = it.body()?.results
-               var valueCurrency: Double
-               when (getCurrencies.value!!.typeCurrency) {
-                   "EUR" -> {
-                       valueCurrency = results?.EUR!!
-                   }
-                   "USD" -> {
-                       valueCurrency = results?.USD!!
-                   }
-                   "JPY" -> {
-                       valueCurrency = results?.JPY!!
-                   }
-                   "GBP" -> {
-                       valueCurrency = results?.GBP!!
-                   }
-                   "CHF" -> {
-                       valueCurrency = results?.CHF!!
-                   }
-                   "CAD" -> {
-                       valueCurrency = results?.CAD!!
-                   }
-                   "PEN" -> {
-                       valueCurrency = results?.PEN!!
-                   }
-                   else -> {
-                       valueCurrency = 0.0
-                   }
-               }
+               val valueCurrency = getValueCurrency(getCurrencies.value!!.typeCurrency,results!!)
                purchaseCurrency.postValue(valueCurrency)
                saleNameCurrency.postValue(valueCurrency + 0.33)
            }
@@ -94,73 +69,53 @@ class ChangeCurrencyViewModel @Inject constructor(private val repository: Curren
     }
 
     fun getCurrencyMulti(from: String,to :String) = viewModelScope.launch(Dispatchers.IO) {
-        repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
+        repository.getCurrencyMulti(from, VAL_MULTIPLE).let {
             if (it.isSuccessful){
                 val results: Results? = it.body()?.results
-                var valueCurrency: Double
-                when (to) {
-                    "EUR" -> {
-                        valueCurrency = results?.EUR!!
-                    }
-                    "USD" -> {
-                        valueCurrency = results?.USD!!
-                    }
-                    "JPY" -> {
-                        valueCurrency = results?.JPY!!
-                    }
-                    "GBP" -> {
-                        valueCurrency = results?.GBP!!
-                    }
-                    "CHF" -> {
-                        valueCurrency = results?.CHF!!
-                    }
-                    "CAD" -> {
-                        valueCurrency = results?.CAD!!
-                    }
-                    "PEN" -> {
-                        valueCurrency = results?.PEN!!
-                    }
-                    else -> {
-                        valueCurrency = 0.0
-                    }
-                }
+                val valueCurrency = getValueCurrency(to,results!!)
                 purchaseCurrency.postValue(valueCurrency)
                 saleNameCurrency.postValue(valueCurrency + 0.22)
             }
         }
     }
     fun sendCurrencyMulti(from: String,to :String) = viewModelScope.launch(Dispatchers.IO) {
-        repository.getCurrencyMulti(from, "EUR,USD,JPY,GBP,CHF,CAD,PEN").let {
+        repository.getCurrencyMulti(from, VAL_MULTIPLE).let {
             val results: Results? = it.body()?.results
-            var valueCurrency: Double
-            when (to) {
-                "EUR" -> {
-                    valueCurrency = results?.EUR!!
-                }
-                "USD" -> {
-                    valueCurrency = results?.USD!!
-                }
-                "JPY" -> {
-                    valueCurrency = results?.JPY!!
-                }
-                "GBP" -> {
-                    valueCurrency = results?.GBP!!
-                }
-                "CHF" -> {
-                    valueCurrency = results?.CHF!!
-                }
-                "CAD" -> {
-                    valueCurrency = results?.CAD!!
-                }
-                "PEN" -> {
-                    valueCurrency = results?.PEN!!
-                }
-                else -> {
-                    valueCurrency = 0.0
-                }
-            }
+            val valueCurrency = getValueCurrency(to,results!!)
             purchaseCurrency.postValue(valueCurrency)
             saleNameCurrency.postValue(valueCurrency + 0.22)
         }
     }
+
+    private fun getValueCurrency(to:String,results:Results): Double {
+        var valueCurrency: Double
+        when (to) {
+            "EUR" -> {
+                valueCurrency = results?.EUR!!
+            }
+            "USD" -> {
+                valueCurrency = results?.USD!!
+            }
+            "JPY" -> {
+                valueCurrency = results?.JPY!!
+            }
+            "GBP" -> {
+                valueCurrency = results?.GBP!!
+            }
+            "CHF" -> {
+                valueCurrency = results?.CHF!!
+            }
+            "CAD" -> {
+                valueCurrency = results?.CAD!!
+            }
+            "PEN" -> {
+                valueCurrency = results?.PEN!!
+            }
+            else -> {
+                valueCurrency = 0.0
+            }
+        }
+        return valueCurrency
+    }
+
 }

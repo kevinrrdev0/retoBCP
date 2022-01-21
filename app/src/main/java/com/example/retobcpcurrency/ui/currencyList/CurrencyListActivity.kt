@@ -3,10 +3,12 @@ package com.example.retobcpcurrency.ui.currencyList
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retobcpcurrency.R
 import com.example.retobcpcurrency.databinding.ActivityCurrencyListBinding
@@ -17,6 +19,7 @@ import com.example.retobcpcurrency.utilities.TO
 import com.example.retobcpcurrency.utilities.TYPE
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class CurrencyListActivity : AppCompatActivity() {
@@ -41,6 +44,11 @@ class CurrencyListActivity : AppCompatActivity() {
                 }
             }
         })
+       lifecycleScope.launchWhenStarted {
+           viewModel.viewState.collect {
+               binding.pbRv.visibility = if (it.loading) View.VISIBLE else View.GONE
+           }
+       }
     }
 
     private fun initActivity() {

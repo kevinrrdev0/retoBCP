@@ -8,6 +8,7 @@ const val CURRENCY_DATA_FILENAME = "currency.json"
 const val DEFAULT_TIMEOUT:Long = 60
 const val STRING_CONTENT_TYPE = "Content-Type"
 const val VAL_CONTENT_TYPE = "application/json"
+const val VAL_MULTIPLE = "EUR,USD,JPY,GBP,CHF,CAD,PEN"
 
 /* Intent */
 const val TYPE = "type"

@@ -16,20 +16,31 @@
         tools:context=".ui.changeCurrency.ChangeCurrencyActivity"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp">
+
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_logo_bcp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="100dp"
-            />
+            android:src="@drawable/ic_logo_bcp" />
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.versionName}"
+            android:textAlignment="textEnd"
+            android:layout_marginTop="-24dp"
+            tools:text="Valor de Prueba"
+            android:textColor="@color/accesible_blue"
+            android:layout_below="@+id/ivLogo"/>
 
         <RelativeLayout
             android:id="@+id/rlMid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivLogo">
+            android:layout_below="@+id/tvVersion"
+            android:layout_marginTop="16dp">
             <LinearLayout
                 android:id="@+id/llSend"
                 android:layout_width="match_parent"
@@ -94,6 +105,7 @@
                         android:lineHeight="24sp"
                         android:gravity="bottom|left"
                         tools:text="Valor de Prueba"
+                        android:focusable="false"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <androidx.appcompat.widget.AppCompatButton
